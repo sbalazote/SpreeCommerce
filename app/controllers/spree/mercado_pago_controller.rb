@@ -2,13 +2,22 @@ module Spree
   class MercadoPagoController < StoreController
 
     require 'mercadopago.rb'
+    require 'openssl'
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
     protect_from_forgery except: :ipn
     skip_before_filter :set_current_order, only: :ipn
 
 
     def checkout
-      $mp = MercadoPago.new('8399876864756804', 'bPT7M0gEPARmuRFZnefXqaiMSAWUm1EE')
+      current_order.state_name == :payment || raise(ActiveRecord::RecordNotFound)
+      payment_method = PaymentMethod::MercadoPagoMethod.find(params[:payment_method_id])
+      payment = current_order.payments.
+          create!({amount: current_order.total, payment_method: payment_method})
+      payment.started_processing!
+
+
+      $mp = MercadoPago.new('8989156561599790', '9auzj1s52Lu8NyNrhlq0DJSDCyItanpA')
 
       preference_data = {
           "items": [
@@ -17,12 +26,12 @@ module Spree
                   "quantity": 1,
                   "unit_price": 10.2,
                   "currency_id": "ARS"
-              }
-          ]
+              }],
+          "back_urls": callback_urls
       }
-      payment = $mp.create_preference(preference_data)
+      preference = $mp.create_preference(preference_data)
 
-      redirect_to payment
+      redirect_to preference['response']['sandbox_init_point']
     end
 
     # Success/pending callbacks are currently aliases, this may change

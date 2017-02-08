@@ -11,3 +11,11 @@ Disallow: /user
 Disallow: /account
 Disallow: /api
 Disallow: /password
+User-agent: *
+Disallow: /checkout
+Disallow: /cart
+Disallow: /orders
+Disallow: /user
+Disallow: /account
+Disallow: /api
+Disallow: /password

@@ -22,12 +22,12 @@ module SpreeCommerce
     end
 
     initializer "spree_payment_network.register.payment_methods" do |app|
-      app.config.spree.payment_methods += [Spree::PaymentMethod::MercadoPago]
+      app.config.spree.payment_methods += [Spree::PaymentMethod::MercadoPagoMethod]
     end
 
 
-    config.i18n.default_locale = :'es'
-    config.i18n.locale = 'es'
+    config.i18n.default_locale = :'es-AR'
+    config.i18n.locale = 'es-AR'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

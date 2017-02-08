@@ -1,5 +1,5 @@
 module Spree
-  class PaymentMethod::MercadoPago < PaymentMethod
+  class PaymentMethod::MercadoPagoMethod < PaymentMethod
     preference :client_id,     :integer
     preference :client_secret, :string
     preference :sandbox, :boolean, default: true
