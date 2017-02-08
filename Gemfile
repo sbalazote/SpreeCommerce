@@ -41,6 +41,8 @@ gem 'spree_gateway', '~> 3.2.0.beta'
 
 gem 'spree_i18n', github: 'spree/spree_i18n'
 
+gem 'mysql2', '~> 0.4.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
