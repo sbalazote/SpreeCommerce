@@ -1,0 +1,5 @@
+es-AR:
+  hello: "Hello world"
+
+  spree:
+    taxonomy_brands_name: "Marcas"
