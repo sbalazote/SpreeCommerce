@@ -1,10 +1,12 @@
 es-AR:
   hello: "Hello world"
-
   spree:
     taxonomy_brands_name: "Marcas"
     returns: "Devoluciones"
+    adjustment_labels:
+      tax_rates:
+        excluding_tax: "Impuestos excluidos"
 
-  mercado_pago:
+  mercado_pago_method:
     make_payment: "Realizar pago en Mercado Pago"
     authentication_error: "Hubo un error al realizar la autenticación con Mercado Pago"
