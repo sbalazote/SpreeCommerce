@@ -3,7 +3,7 @@ require 'mercado_pago/client/authentication'
 require 'mercado_pago/client/preferences'
 require 'mercado_pago/client/api'
 
-module MercadoPago
+module MercadoPagoMethod
   class Client
     # These three includes are because of the user of line_item_description from
     # ProductsHelper

@@ -3,6 +3,7 @@ es-AR:
 
   spree:
     taxonomy_brands_name: "Marcas"
+    returns: "Devoluciones"
 
   mercado_pago:
     make_payment: "Realizar pago en Mercado Pago"

@@ -1,4 +1,4 @@
-module MercadoPago
+module MercadoPagoMethod
   class Notification < ActiveRecord::Base
     self.table_name = "mercado_pago_notifications"
     

@@ -16,21 +16,12 @@ module Spree
           create!({amount: current_order.total, payment_method: payment_method})
       payment.started_processing!
 
-
       $mp = MercadoPago.new('8989156561599790', '9auzj1s52Lu8NyNrhlq0DJSDCyItanpA')
 
-      preference_data = {
-          "items": [
-              {
-                  "title": "testCreate",
-                  "quantity": 1,
-                  "unit_price": 10.2,
-                  "currency_id": "ARS"
-              }],
-          "back_urls": callback_urls,
-          "external_reference": payment.id
-      }
-      preference = $mp.create_preference(preference_data)
+      preferences = MercadoPagoMethod::OrderPreferencesBuilder.
+          new(current_order, payment, callback_urls).
+          preferences_hash
+      preference = $mp.create_preference(preferences)
 
       redirect_to preference['response']['sandbox_init_point']
     end

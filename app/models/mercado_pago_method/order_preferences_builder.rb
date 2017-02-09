@@ -1,4 +1,4 @@
-module MercadoPago
+module MercadoPagoMethod
   class OrderPreferencesBuilder
     include ActionView::Helpers::TextHelper
     include ActionView::Helpers::SanitizeHelper
@@ -13,7 +13,7 @@ module MercadoPago
 
     def preferences_hash
       {
-        external_reference: @payment.identifier,
+        external_reference: @payment.id,
         back_urls: @callback_urls,
         payer: @payer_data,
         items: generate_items
