@@ -27,7 +27,8 @@ module Spree
                   "unit_price": 10.2,
                   "currency_id": "ARS"
               }],
-          "back_urls": callback_urls
+          "back_urls": callback_urls,
+          "external_reference": payment.id
       }
       preference = $mp.create_preference(preference_data)
 
@@ -67,7 +68,7 @@ module Spree
     private
 
     def payment
-      @payment ||= Spree::Payment.where(identifier: params[:external_reference]).
+      @payment ||= Spree::Payment.where(id: params[:external_reference]).
         first
     end
 
